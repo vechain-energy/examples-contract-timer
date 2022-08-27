@@ -10,7 +10,11 @@ contract Timer {
         changedAt = block.timestamp;
     }
 
-    function countdown () public view returns (uint256 secondsLeft) {
-        secondsLeft = timestamp - block.timestamp;
+    function countdown() public view returns (uint256 secondsLeft) {
+        secondsLeft = (timestamp - block.timestamp);
+    }
+
+    function countdownMinutes() public view returns (uint256 minutesLeft) {
+        minutesLeft = (timestamp - block.timestamp) / 1 minutes;
     }
 }

@@ -37,6 +37,21 @@ describe('Timer', () => {
     expect(countdownNumber).toBeGreaterThanOrEqual(futureSeconds - 10)
   })
 
+
+  it('returns a countdown in seconds to the set timestamp', async () => {
+    const futureMinutes = 60
+    const future = Math.floor((new Date()) / 1000) + (futureMinutes * 60)
+    await contracts.Timer.setCountdownTo(future)
+
+    const countdown = await contracts.Timer.countdownMinutes()
+    const countdownNumber = countdown.toNumber()
+
+    // the test transactions need some seconds to run, testing for a timeframe of up to 10s difference
+    expect(countdownNumber).toBeLessThan(futureMinutes)
+    expect(countdownNumber).toBeGreaterThanOrEqual(futureMinutes - 1)
+  })
+
+
   it('provides access to last timestamp of change', async () => {
     const blockTimestamp = Math.floor((new Date()) / 1000) + 3600
     await ethers.provider.send("evm_setNextBlockTimestamp", [blockTimestamp])

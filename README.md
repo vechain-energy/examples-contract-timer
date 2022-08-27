@@ -112,8 +112,8 @@ $ yarn deploy Timer
 yarn run v1.22.17
 $ node scripts/deploy-contract.js Timer
 [Timer] Deploying Contract 
-[Timer] Transaction Id: 0x289ab8a0d77a5c8be3284e99cbf7a4f9a0d4b968becd7080cc5a6bc2748593cd
-[Timer] Contract is now available at 0x87579092E4645C9322B783764df528c61873deE9
+[Timer] Transaction Id: 0x2c481e9607ba460db952e54f3b5f6ef697567c4322622bf2689ba7caab9417a1
+[Timer] Contract is now available at 0x23272358E253cE0EbBEBA4eAe3e8591A8E6194ce
 
 ✨  Done in 19.19s.
 ```
@@ -126,25 +126,32 @@ Test `setCountdownTo(2051218800)` via vechain.energy API:
 $ curl -X POST https://sponsor-testnet.vechain.energy/by/115/transaction \
   -H "X-API-Key: gqxao258sg.65fdb6ea8d8f634080fb65322f3170fed920b7dc4adc3f805ec023de07b27282" \
   -H "Content-Type: application/json" \
-  -d '{"clauses": [ "0x87579092E4645C9322B783764df528c61873deE9.setCountdownTo(uint256 2051218800)" ]}'
+  -d '{"clauses": [ "0x23272358E253cE0EbBEBA4eAe3e8591A8E6194ce.setCountdownTo(uint256 2051218800)" ]}'
 
-{"id":"0xe7d1577665fdd84767c725507b8e56e03cb089fdff36c5ad8698db878a7b0d3f","url":"https://vethor-node-test.vechaindev.com/transactions/0xe7d1577665fdd84767c725507b8e56e03cb089fdff36c5ad8698db878a7b0d3f?pending=true"}
+{"id":"0x189d1f7015df8cfe48666d8800337f7e0b9d504ddd3dc95e186f12d525b50d18","url":"https://vethor-node-test.vechaindev.com/transactions/0x189d1f7015df8cfe48666d8800337f7e0b9d504ddd3dc95e186f12d525b50d18?pending=true"}
 ```
 
 Read  `countdown()`:
 
 ```shell
-$ curl https://call.api.vechain.energy/test/0x87579092E4645C9322B783764df528c61873deE9/countdown\(\)%20returns\(uint256\) -s
-"389593430"
+$ curl https://call.api.vechain.energy/test/0x23272358E253cE0EbBEBA4eAe3e8591A8E6194ce/countdown\(\)%20returns\(uint256\) -s
+"389592910"
+```
+
+Read  `countdownMinutes()`:
+
+```shell
+$ curl https://call.api.vechain.energy/test/0x23272358E253cE0EbBEBA4eAe3e8591A8E6194ce/countdownMinutes\(\)%20returns\(uint256\) -s
+"6493214"
 ```
 
 Read  `changedAt()`:
 
 ```shell
-$ curl https://call.api.vechain.energy/test/0x87579092E4645C9322B783764df528c61873deE9/changedAt\(\)%20returns\(uint256\) -s
-"1661625260"
+$ curl https://call.api.vechain.energy/test/0x23272358E253cE0EbBEBA4eAe3e8591A8E6194ce/changedAt\(\)%20returns\(uint256\) -s
+"1661625890"
 ```
 
 ## Result
 
-* Transaction: https://explore-testnet.vechain.org/transactions/0xe7d1577665fdd84767c725507b8e56e03cb089fdff36c5ad8698db878a7b0d3f#info
+* Transaction: https://explore-testnet.vechain.org/transactions/0x189d1f7015df8cfe48666d8800337f7e0b9d504ddd3dc95e186f12d525b50d18#info
